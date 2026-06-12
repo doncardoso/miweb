@@ -147,8 +147,8 @@ div h2{
     max-width: 320px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-     position: relative;
-    overflow: visible;
+    /* CAMBIO: necesario para que z-index funcione */
+    position: relative;
     z-index: 1;
 }
 
@@ -156,6 +156,7 @@ div h2{
 .card:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* CAMBIO: la card en hover pasa por encima de la vecina */
     z-index: 100;
 }
 
@@ -175,16 +176,23 @@ div h2{
     margin-bottom: 15px;
     border-radius: 30px;
     display: block;
-    transform-origin: center;
+    /* CAMBIO: una sola transition (la duplicada anterior se elimina) */
     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease, border-radius 0.4s;
+    /* CAMBIO: para que el scale crezca desde el centro */
+    transform-origin: center;
 }
 
 
 .card:hover img{
-    transform: scale(1.1);
-    position: relative;
+    /* CAMBIO: se elimina position: fixed, top, left y translate
+       (eso teletransportaba la imagen al centro de la pantalla
+       y causaba que el hover se perdiera/parpadeara) */
+    transform: scale(1.4);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.20);
     border-radius: 10px;
+    /* CAMBIO: evita que la imagen agrandada "robe" el hover
+       de la card vecina cuando la invade visualmente */
+    pointer-events: none;
 }
 
 
@@ -210,13 +218,7 @@ div h2{
 .card:hover .tech-list span img{
     display: inline-block;
 }
-.card img.zoomed{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.4);
-    z-index: 9999;
-}
+
 
 
 
@@ -299,23 +301,6 @@ div h2{
         display: none;     
         }
     }
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
 
 
 
