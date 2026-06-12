@@ -210,7 +210,13 @@ div h2{
 .card:hover .tech-list span img{
     display: inline-block;
 }
-
+.card img.zoomed{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.4);
+    z-index: 9999;
+}
 
 
 
