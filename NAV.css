@@ -147,12 +147,16 @@ div h2{
     max-width: 320px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     position: relative;
+    overflow: visible;
+    z-index: 1;
 }
 
 
 .card:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
 .card p{
@@ -170,19 +174,15 @@ div h2{
     object-fit: cover;
     margin-bottom: 15px;
     border-radius: 30px;
-    transition: transform 0.3s ease, position 0.4s;
     display: block;
+    transform-origin: center;
     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease, border-radius 0.4s;
 }
 
 
 .card:hover img{
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.4);
-    transition: transform 0.3s ease;
-    z-index: 9999;
+    transform: scale(1.4);
+    position: relative;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.20);
     border-radius: 10px;
 }
